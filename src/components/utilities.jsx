@@ -3,29 +3,34 @@ export const drawRect = (detections, ctx) => {
     const [x, y, width, height] = prediction["bbox"];
     const text = prediction["class"];
 
-    // Define the color and text styles based on the label
-    let color;
-    let label;
-    if (["apple", "orange", "banana"].includes(text)) {
-      color = "green";
-      label = text.substring(0, 1).toUpperCase() + text.substring(1) + " (Good)";
-    } else if (["sandwich", "hot dog", "donut", "cake", "pizza"].includes(text)) {
-      color = "red";
-      label = text.substring(0, 1).toUpperCase() + text.substring(1) + " (Bad)";
-    } else {
-      // Handle other labels as needed
-      color = "blue";
-      label = text;
+    const includedClasses = ["apple", "orange", "banana", "sandwich", "hot dog", "donut", "cake", "pizza"];
+
+    // Check if the class is included
+    if (includedClasses.includes(text)) {
+      // Define the color and text styles based on the label
+      let color;
+      let label;
+      if (["apple", "orange", "banana"].includes(text)) {
+        color = "green";
+        label = text.substring(0, 1).toUpperCase() + text.substring(1) + " (Good)";
+      } else if (["sandwich", "hot dog", "donut", "cake", "pizza"].includes(text)) {
+        color = "red";
+        label = text.substring(0, 1).toUpperCase() + text.substring(1) + " (Bad)";
+      } else {
+        // Handle other labels as needed
+        color = "blue";
+        label = text;
+      }
+
+      // Apply styles and draw the rectangle and label
+      ctx.strokeStyle = color;
+      ctx.font = "20px Arial";
+      ctx.fillStyle = color;
+
+      ctx.beginPath();
+      ctx.fillText(label, x, y);
+      ctx.rect(x, y, width, height);
+      ctx.stroke();
     }
-
-    // Apply styles and draw the rectangle and label
-    ctx.strokeStyle = color;
-    ctx.font = "20px Arial";
-    ctx.fillStyle = color;
-
-    ctx.beginPath();
-    ctx.fillText(label, x, y);
-    ctx.rect(x, y, width, height);
-    ctx.stroke();
   });
 };
