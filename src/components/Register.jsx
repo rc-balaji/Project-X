@@ -14,7 +14,7 @@ const Register = () => {
     event.preventDefault();
 
     axios
-      .post("http://localhost:3001/register", { name, email, password })
+      .post("https://health-server-bms1.onrender.com/register", { name, email, password })
       .then((result) => {
         console.log(result);
         if (result.data === "Already registered") {
