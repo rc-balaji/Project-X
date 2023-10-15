@@ -3,15 +3,15 @@ export const drawRect = (detections, ctx) => {
     const [x, y, width, height] = prediction["bbox"];
     const text = prediction["class"];
 
-    // if (text === "apple") {
+
       const color = "green";
       ctx.strokeSylt = color;
-      ctx.font = "18px Arial";
+      ctx.font = "20px Arial";
       ctx.fillStyle = color;
 
       ctx.beginPath();
       ctx.fillText(text, x, y);
-      ctx.rect(x, y, width, height);
+      ctx.rect(0, 0, width, height);
      
       ctx.stroke();
     }
