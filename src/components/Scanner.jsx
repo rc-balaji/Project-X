@@ -71,10 +71,10 @@ export function Scanner() {
           muted={true} 
           style={{
             position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
+            marginLeft: 0,
+            marginRight: 0,
             left: 0,
-            right: 'auto',
+            right: 0,
             textAlign: "center",
             zindex: 9,
             width: 640,
@@ -86,10 +86,10 @@ export function Scanner() {
           ref={canvasRef}
           style={{
             position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
+            marginLeft: 0,
+            marginRight: 0,
             left: 0,
-            right: 'auto',
+            right: 0,
             textAlign: "center",
             zindex: 8,
             width: 640,
