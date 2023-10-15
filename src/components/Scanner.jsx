@@ -54,6 +54,7 @@ export function Scanner() {
     <div className="App">
       <Nav />
       <header className="App-header">
+            <button onClick={switchCamera}>Switch Camera</button>
         <div style={{ position: "relative" }}>
           <Webcam
             ref={webcamRef}
@@ -70,7 +71,6 @@ export function Scanner() {
             }}
           />
         </div>
-        <button onClick={switchCamera}>Switch Camera</button>
       </header>
     </div>
   );
