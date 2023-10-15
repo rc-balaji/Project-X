@@ -69,12 +69,17 @@ export function Scanner() {
         <Webcam
           ref={webcamRef}
           muted={true} 
+         
           
         />
 
         <canvas
           ref={canvasRef}
-          
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
         />
       </header>
     </div>
