@@ -55,14 +55,14 @@ export function Scanner() {
       <Nav />
       <header className="App-header">
 
-        <div style={{ position: "relative" }}>
       <button
   onClick={switchCamera}
   className="btn btn-primary"
-  style={{ position: "absolute", top: "100px", right: "10px"  }}
+//   style={{ position: "absolute", top: "00px", right: "10px"  }}
 >
   Switch Camera
 </button>
+        <div style={{ position: "relative" }}>
           <Webcam
             ref={webcamRef}
             muted={true}
