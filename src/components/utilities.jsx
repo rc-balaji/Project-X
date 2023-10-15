@@ -11,7 +11,7 @@ export const drawRect = (detections, ctx) => {
 
       ctx.beginPath();
       ctx.fillText(text, x, y);
-      ctx.rect(0, 0, width, height);
+      ctx.rect(x, y, width, height);
      
       ctx.stroke();
     }
