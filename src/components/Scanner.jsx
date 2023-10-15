@@ -92,8 +92,8 @@ export function Scanner() {
             right: 0,
             textAlign: "center",
             zindex: 8,
-            width: 480,
-            height: 480,
+            width: 'auto',
+            height: 'auto',
           }}
         />
       </header>
