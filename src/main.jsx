@@ -1,10 +1,24 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+// jsx
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.jsx';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+import * as tf from '@tensorflow/tfjs';
+
+async function setupTensorflow() {
+ await tf.ready();
+ const backend = await tf.findBackend('webgl');
+ if (backend != null) {
+    tf.setBackend(backend);
+ }
+}
+
+const root = createRoot(document.getElementById('root'));
+
+setupTensorflow().then(() => {
+ root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+ );
+});

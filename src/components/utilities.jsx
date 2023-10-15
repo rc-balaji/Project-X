@@ -3,7 +3,7 @@ export const drawRect = (detections, ctx) => {
     const [x, y, width, height] = prediction["bbox"];
     const text = prediction["class"];
 
-    if (text === "apple") {
+    // if (text === "apple") {
       const color = "green";
       ctx.strokeSylt = color;
       ctx.font = "18px Arial";
@@ -15,5 +15,5 @@ export const drawRect = (detections, ctx) => {
      
       ctx.stroke();
     }
-  });
+  );
 };
