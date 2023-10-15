@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import * as cocossd from "@tensorflow-models/coco-ssd";
 import Webcam from "react-webcam";
 import { drawRect } from "./utilities";
@@ -7,6 +7,15 @@ import { Nav } from "./Nav/Nav";
 export function Scanner() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+  const [facingMode, setFacingMode] = useState("user");
+
+  const switchCamera = () => {
+    setFacingMode(facingMode === "user" ? "environment" : "user");
+  };
+
+  const videoConstraints = {
+    facingMode,
+  };
 
   const runCoco = async () => {
     const net = await cocossd.load();
@@ -46,7 +55,11 @@ export function Scanner() {
       <Nav />
       <header className="App-header">
         <div style={{ position: "relative" }}>
-          <Webcam ref={webcamRef} muted={true} />
+          <Webcam
+            ref={webcamRef}
+            muted={true}
+            videoConstraints={videoConstraints}
+          />
 
           <canvas
             ref={canvasRef}
@@ -57,6 +70,7 @@ export function Scanner() {
             }}
           />
         </div>
+        <button onClick={switchCamera}>Switch Camera</button>
       </header>
     </div>
   );
