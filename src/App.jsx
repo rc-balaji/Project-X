@@ -1,4 +1,5 @@
-import {Home} from './components/Home';
+
+ {Home} from './components/Home';
 import Login from './components/Login';
 import { Detector } from './components/Detector';
 import { Scanner } from './components/Scanner';
@@ -8,7 +9,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { Nav } from './components/Nav/Nav';
 
 function App() {
-
+//
   return (
     <div >
       <BrowserRouter >
