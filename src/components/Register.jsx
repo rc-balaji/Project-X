@@ -16,7 +16,7 @@ export const Register = () => {
     event.preventDefault();
 
     axios
-      .post("http://localhost:3000/register", {
+      .post("https://health-server-bms1.onrender.com/register", {
         uname,
         mail,
         password,
