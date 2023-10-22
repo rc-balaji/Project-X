@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -31,15 +30,18 @@ const Login = () => {
   };
 
   return (
-    <div className="container py-5 h-100">
-      <div className="row d-flex justify-content-center align-items-center h-100">
-        <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+    <div
+      className="container-fluid min-vh-100"
+      style={{ backgroundColor: "#fff9db" }}
+    >
+      <div className="row min-vh-100">
+        <div className="col-12 col-md-8 col-lg-6 col-xl-5 mx-auto align-self-center">
           <div
-            className="card shadow-2-strong"
-            style={{ borderRadius: "1rem", backgroundColor: "#f0ca32" }}
+            className="card shadow p-3 mb-5 rounded"
+            style={{ backgroundColor: "#e8d04a" }}
           >
             <div className="card-body p-5 text-center">
-              <h3 className="mb-5">Sign in</h3>
+              <h2 className="mb-5">ARHealthEats</h2>
 
               <form onSubmit={handleSubmit}>
                 <div className="form-outline mb-4">

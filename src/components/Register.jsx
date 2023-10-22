@@ -1,27 +1,30 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Register = () => {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     axios
-      .post("https://health-server-bms1.onrender.com/register", { name, email, password })
+      .post("https://example.com/register", {
+        name,
+        email,
+        password,
+      })
       .then((result) => {
-        console.log(result);
         if (result.data === "Already registered") {
-          alert("E-mail already registered! Please Login to proceed.");
+          alert("Email already registered! Please login.");
           navigate("/login");
         } else {
-          alert("Registered successfully! Please Login to proceed.");
+          alert("Registered successfully! Please login.");
           navigate("/login");
         }
       })
@@ -29,65 +32,76 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <div
-        className="d-flex justify-content-center align-items-center text-center vh-100"
-        style={{
-          backgroundImage:
-            "linear-gradient(#00d5ff,#0095ff,rgba(93,0,255,.555))",
-        }}
-      >
-        <div className="bg-white p-3 rounded" style={{ width: "40%" }}>
-          <h2 className="mb-3 text-primary">Register</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3 text-start">
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                <strong>Name</strong>
-              </label>
-              <input
-                type="text"
-                placeholder="Enter Name"
-                className="form-control"
-                id="exampleInputname"
-                onChange={(event) => setName(event.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-3 text-start">
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                <strong>Email Id</strong>
-              </label>
-              <input
-                type="email"
-                placeholder="Enter Email"
-                className="form-control"
-                id="exampleInputEmail1"
-                onChange={(event) => setEmail(event.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-3 text-start">
-              <label htmlFor="exampleInputPassword1" className="form-label">
-                <strong>Password</strong>
-              </label>
-              <input
-                type="password"
-                placeholder="Enter Password"
-                className="form-control"
-                id="exampleInputPassword1"
-                onChange={(event) => setPassword(event.target.value)}
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Register
-            </button>
-          </form>
+    <div
+      className="container-fluid min-vh-100"
+      style={{ backgroundColor: "#fff9db" }}
+    >
+      <div className="row min-vh-100">
+        <div className="col-12 col-md-8 col-lg-6 col-xl-5 mx-auto align-self-center">
+          <div
+            className="card shadow p-3 mb-5 rounded"
+            style={{
+              backgroundColor: "#e8d04a",
+              borderRadius: "1rem",
+              color: "black",
+            }}
+          >
+            <div className="card-body p-5 text-center">
+              <h2 className="mb-5">ARHealthEats</h2>
 
-          <p className="container my-2">Already have an account ?</p>
-          <Link to="/login" className="btn btn-secondary">
-            Login
-          </Link>
+              <form onSubmit={handleSubmit}>
+                <div className="form-outline mb-4">
+                  <input
+                    type="text"
+                    id="typeName"
+                    className="form-control form-control-lg"
+                    placeholder="Name"
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <label className="form-label" htmlFor="typeName">
+                    Name
+                  </label>
+                </div>
+
+                <div className="form-outline mb-4">
+                  <input
+                    type="email"
+                    id="typeEmail"
+                    className="form-control form-control-lg"
+                    placeholder="Email address"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <label className="form-label" htmlFor="typeEmail">
+                    Email
+                  </label>
+                </div>
+
+                <div className="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="typePassword"
+                    className="form-control form-control-lg"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <label className="form-label" htmlFor="typePassword">
+                    Password
+                  </label>
+                </div>
+
+                <button
+                  className="btn btn-primary btn-lg btn-block"
+                  type="submit"
+                >
+                  Register
+                </button>
+              </form>
+
+              <p className="mt-3">
+                Already have an account? <Link to="/login">Login</Link>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
