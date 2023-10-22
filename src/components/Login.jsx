@@ -1,32 +1,74 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../App";
 
-const Login = () => {
-  const [email, setEmail] = useState();
+export const Login = () => {
+  const { setEmail, setPass, setName } = useAppContext();
+  const [mail, setMail] = useState();
   const [password, setPassword] = useState();
-  const navigate = useNavigate();
+  const [uname, setUName] = useState("");
+  // const navigate = useNavigate();
+
+  const [UsersList, setUserList] = useState([]);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/login");
+      console.log(response.data);
+      setUserList(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const nav = useNavigate();
+
+  const isAuth = (user, pass) => {
+    var r = 0;
+
+    if (UsersList.length) {
+      UsersList.map((item) => {
+        if (item.email === user && item.password === pass) {
+          console.log(item.username);
+          setName(item.username);
+          r = 1;
+        } else if (item.email === user && item.password !== pass) {
+          r = 2;
+        }
+      });
+    }
+
+    if (r === 1) {
+      console.log("Uname", uname);
+
+      alert("Login Success");
+      // setName(uname);
+      setEmail(mail);
+      setPass(password);
+      setUName("");
+      setPassword("");
+      setMail("");
+      return true;
+    } else if (r === 2) {
+      alert("Incorrect Password");
+      return false;
+    } else {
+      alert("Invalid Username/Password");
+      return false;
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios
-      .post("https://health-server-bms1.onrender.com/login", {
-        email,
-        password,
-      })
-      .then((result) => {
-        console.log(result);
-        if (result.data === "Success") {
-          console.log("Login Success");
-          alert("Login successful!");
-          navigate("/home");
-        } else {
-          alert("Incorrect password! Please try again.");
-        }
-      })
-      .catch((err) => console.log(err));
+    if (isAuth(mail, password)) {
+      nav("/home");
+    }
   };
 
   return (
@@ -50,7 +92,7 @@ const Login = () => {
                     id="typeEmail"
                     className="form-control form-control-lg"
                     placeholder="Email address"
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setMail(e.target.value)}
                   />
                   <label className="form-label" htmlFor="typeEmail">
                     Email
@@ -93,4 +135,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+// export default Login;

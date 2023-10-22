@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useAppContext } from "../App";
 
-const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+export const Register = () => {
+  // const {  } = useAppContext();
+  const [uname, setUName] = useState("");
+  const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -14,9 +16,9 @@ const Register = () => {
     event.preventDefault();
 
     axios
-      .post("https://example.com/register", {
-        name,
-        email,
+      .post("http://localhost:3000/register", {
+        uname,
+        mail,
         password,
       })
       .then((result) => {
@@ -56,7 +58,7 @@ const Register = () => {
                     id="typeName"
                     className="form-control form-control-lg"
                     placeholder="Name"
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setUName(e.target.value)}
                   />
                   <label className="form-label" htmlFor="typeName">
                     Name
@@ -69,7 +71,7 @@ const Register = () => {
                     id="typeEmail"
                     className="form-control form-control-lg"
                     placeholder="Email address"
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setMail(e.target.value)}
                   />
                   <label className="form-label" htmlFor="typeEmail">
                     Email
@@ -108,4 +110,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+// export default Register;
