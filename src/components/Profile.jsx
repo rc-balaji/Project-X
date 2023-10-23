@@ -47,74 +47,77 @@ export const Profile = () => {
   };
 
   return (
-    <div className="container">
+    <div>
       <Nav />
-      <div className="row mt-4">
-        <div className="col-md-6 mx-auto">
-          <div className="card">
-            <div className="card-header bg-primary text-white">
-              <h5 className="card-title">Profile</h5>
-            </div>
-            <div className="card-body">
-              <p className="card-text">
-                <strong>Name:</strong> {name}
-              </p>
-              <p className="card-text">
-                <strong>Email:</strong> {email}
-              </p>
-              <p className="card-text">
-                <strong>Password:</strong> {pass}
-              </p>
-              <div className="form-group mt-3">
-                {/* <label htmlFor="dateOfBirth">Date of Birth</label> */}
-                {isEditing ? (
-                  <div>
-                    <input
-                      type="date"
-                      id="dateOfBirth"
-                      className="form-control"
-                      value={dob}
-                      onChange={handleDateOfBirthChange}
-                    />
-                    <button
-                      className="btn btn-primary mt-2"
-                      onClick={handleUpdateProfile}
-                    >
-                      Update
-                    </button>
-                  </div>
-                ) : (
-                  <div>
-                    <p className="card-text">
-                      {dob ? (
-                        <span>
-                          <strong>DOB:</strong> {dob}
-                        </span>
-                      ) : (
-                        <span>
-                          <strong>DOB:</strong> Not Provided
-                        </span>
-                      )}
-                    </p>
-                    <p className="card-text">
-                      {dob ? (
-                        <span>
-                          <strong>Age:</strong> {age} years
-                        </span>
-                      ) : (
-                        <span>
-                          <strong>Age:</strong> Not Provided
-                        </span>
-                      )}
-                    </p>
-                    <button
-                      className="btn btn-primary mt-2"
-                      onClick={() => setIsEditing(true)}
-                    >
-                      Edit
-                    </button>
-                  </div>
-                )}
+
+      <div className="container">
+        <div className="row mt-4">
+          <div className="col-md-6 mx-auto">
+            <div className="card">
+              <div className="card-header bg-primary text-white">
+                <h5 className="card-title">Profile</h5>
+              </div>
+              <div className="card-body">
+                <p className="card-text">
+                  <strong>Name:</strong> {name}
+                </p>
+                <p className="card-text">
+                  <strong>Email:</strong> {email}
+                </p>
+                <p className="card-text">
+                  <strong>Password:</strong> {pass}
+                </p>
+                <div className="form-group mt-3">
+                  {/* <label htmlFor="dateOfBirth">Date of Birth</label> */}
+                  {isEditing ? (
+                    <div>
+                      <input
+                        type="date"
+                        id="dateOfBirth"
+                        className="form-control"
+                        value={dob}
+                        onChange={handleDateOfBirthChange}
+                      />
+                      <button
+                        className="btn btn-primary mt-2"
+                        onClick={handleUpdateProfile}
+                      >
+                        Update
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      <p className="card-text">
+                        {dob ? (
+                          <span>
+                            <strong>DOB:</strong> {dob}
+                          </span>
+                        ) : (
+                          <span>
+                            <strong>DOB:</strong> Not Provided
+                          </span>
+                        )}
+                      </p>
+                      <p className="card-text">
+                        {dob ? (
+                          <span>
+                            <strong>Age:</strong> {age} years
+                          </span>
+                        ) : (
+                          <span>
+                            <strong>Age:</strong> Not Provided
+                          </span>
+                        )}
+                      </p>
+                      <button
+                        className="btn btn-primary mt-2"
+                        onClick={() => setIsEditing(true)}
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
