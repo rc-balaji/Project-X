@@ -32,7 +32,7 @@ export const Profile = () => {
 
   const handleUpdateProfile = async () => {
     try {
-      await axios.put("http://localhost:3000/updateProfile", {
+      await axios.put("https://health-server-bms1.onrender.com/updateProfile", {
         username: name,
         dob: dob,
         age: age,

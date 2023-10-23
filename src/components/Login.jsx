@@ -16,7 +16,9 @@ export const Login = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/login");
+      const response = await axios.get(
+        "https://health-server-bms1.onrender.com/login"
+      );
       console.log(response.data);
       setUserList(response.data);
       setLoading(false);

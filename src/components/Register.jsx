@@ -20,7 +20,7 @@ export const Register = () => {
     const age = null; // Set to null if not provided
 
     axios
-      .post("http://localhost:3000/register", {
+      .post("https://health-server-bms1.onrender.com/register", {
         uname,
         mail,
         password,
@@ -36,7 +36,10 @@ export const Register = () => {
           navigate("/login");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert("Failure");
+      });
   };
 
   return (
