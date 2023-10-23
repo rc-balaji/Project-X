@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useAppContext } from "../App";
+import Logo from "./Logo.png";
 
 export const Register = () => {
   // const {  } = useAppContext();
@@ -49,7 +50,13 @@ export const Register = () => {
             }}
           >
             <div className="card-body p-5 text-center">
-              <h2 className="mb-5">ARHealthEats</h2>
+              <img
+                src={Logo}
+                alt="logo"
+                className="rounded-circle mb-4"
+                style={{ width: "100px" }}
+              />
+              <h2 className="mb-5">SIGN UP</h2>
 
               <form onSubmit={handleSubmit}>
                 <div className="form-outline mb-4">

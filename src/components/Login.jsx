@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../App";
 import Loader from "./Loader"; // Import the Loader component
+import Logo from "./Logo.png"; // Import your logo image
 
 export const Login = () => {
   const { setEmail, setPass, setName } = useAppContext();
@@ -85,7 +86,13 @@ export const Login = () => {
             style={{ backgroundColor: "#e8d04a" }}
           >
             <div className="card-body p-5 text-center">
-              <h2 className="mb-5">ARHealthEats</h2>
+              <img
+                src={Logo}
+                alt="logo"
+                className="rounded-circle mb-4"
+                style={{ width: "100px" }}
+              />
+              <h2 className="mb-5">SIGN IN</h2>
 
               {loading ? (
                 <Loader /> // Display the Loader component while loading
@@ -140,5 +147,3 @@ export const Login = () => {
     </div>
   );
 };
-
-// export default Login;
