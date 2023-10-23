@@ -24,13 +24,14 @@ export const Login = () => {
       setLoading(false);
     } catch (error) {
       console.error(error);
-      setLoading(false);
+      setLoading(true);
+      // fetchData();
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [UsersList]);
 
   const nav = useNavigate();
 
