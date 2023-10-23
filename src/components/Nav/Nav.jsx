@@ -26,8 +26,11 @@ export const Nav = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light" style={navBarStyle}>
-      <a className="navbar-brand" href="/home">
+      <a className="navbar-brand">
         <img
+          onClick={() => {
+            navigate("/home");
+          }}
           src={Logo}
           width={200}
           style={{ borderRadius: 20, margin: 10 }}
