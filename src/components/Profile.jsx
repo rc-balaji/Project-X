@@ -66,7 +66,7 @@ export const Profile = () => {
                 <strong>Password:</strong> {pass}
               </p>
               <div className="form-group mt-3">
-                <label htmlFor="dateOfBirth">Date of Birth</label>
+                {/* <label htmlFor="dateOfBirth">Date of Birth</label> */}
                 {isEditing ? (
                   <div>
                     <input
