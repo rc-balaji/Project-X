@@ -15,10 +15,12 @@ export const useAppContext = () => {
 };
 
 function App() {
-  const [value1, setValue1] = useState("Value 2");
-  const [email, setEmail] = useState("email");
-  const [pass, setPass] = useState("pass");
-  const [name, setName] = useState("name");
+  const [value1, setValue1] = useState("");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [name, setName] = useState("");
+  const [dob, setDob] = useState(null); // State for Date of Birth
+  const [age, setAge] = useState(null); // State for Age
   return (
     <div>
       <Context.Provider
@@ -31,6 +33,10 @@ function App() {
           setPass,
           value1,
           setValue1,
+          dob,
+          setDob,
+          age,
+          setAge,
         }}
       >
         <BrowserRouter>

@@ -1,10 +1,19 @@
 // jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "./Logo.png";
+import { useAppContext } from "../../App";
 
 export const Nav = () => {
   const navigate = useNavigate();
+  const { email } = useAppContext();
+
+  useEffect(() => {
+    const reload = () => {
+      if (email === "") navigate("/login");
+    };
+    reload();
+  });
 
   const navBarStyle = {
     backgroundColor: "#fcd303",

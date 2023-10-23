@@ -7,7 +7,7 @@ import Loader from "./Loader"; // Import the Loader component
 import Logo from "./Logo.png"; // Import your logo image
 
 export const Login = () => {
-  const { setEmail, setPass, setName } = useAppContext();
+  const { setEmail, setPass, setName, setDob, setAge } = useAppContext();
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [uname, setUName] = useState("");
@@ -16,9 +16,7 @@ export const Login = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        "https://health-server-bms1.onrender.com/login"
-      );
+      const response = await axios.get("http://localhost:3000/login");
       console.log(response.data);
       setUserList(response.data);
       setLoading(false);
@@ -42,6 +40,8 @@ export const Login = () => {
         if (item.email === user && item.password === pass) {
           console.log(item.username);
           setName(item.username);
+          setDob(item.dob);
+          setAge(item.age);
           r = 1;
         } else if (item.email === user && item.password !== pass) {
           r = 2;

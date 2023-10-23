@@ -16,11 +16,16 @@ export const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const dob = null; // Set to null if not provided
+    const age = null; // Set to null if not provided
+
     axios
-      .post("https://health-server-bms1.onrender.com/register", {
+      .post("http://localhost:3000/register", {
         uname,
         mail,
         password,
+        dob,
+        age,
       })
       .then((result) => {
         if (result.data === "Already registered") {
