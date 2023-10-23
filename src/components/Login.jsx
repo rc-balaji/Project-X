@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../App";
+import Loader from "./Loader"; // Import the Loader component
 
 export const Login = () => {
   const { setEmail, setPass, setName } = useAppContext();
-  const [mail, setMail] = useState();
-  const [password, setPassword] = useState();
+  const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
   const [uname, setUName] = useState("");
-  // const navigate = useNavigate();
-
   const [UsersList, setUserList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -19,8 +20,10 @@ export const Login = () => {
       );
       console.log(response.data);
       setUserList(response.data);
+      setLoading(false);
     } catch (error) {
       console.error(error);
+      setLoading(false);
     }
   };
 
@@ -46,10 +49,7 @@ export const Login = () => {
     }
 
     if (r === 1) {
-      console.log("Uname", uname);
-
       alert("Login Success");
-      // setName(uname);
       setEmail(mail);
       setPass(password);
       setUName("");
@@ -87,40 +87,44 @@ export const Login = () => {
             <div className="card-body p-5 text-center">
               <h2 className="mb-5">ARHealthEats</h2>
 
-              <form onSubmit={handleSubmit}>
-                <div className="form-outline mb-4">
-                  <input
-                    type="email"
-                    id="typeEmail"
-                    className="form-control form-control-lg"
-                    placeholder="Email address"
-                    onChange={(e) => setMail(e.target.value)}
-                  />
-                  <label className="form-label" htmlFor="typeEmail">
-                    Email
-                  </label>
-                </div>
+              {loading ? (
+                <Loader /> // Display the Loader component while loading
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  <div className="form-outline mb-4">
+                    <input
+                      type="email"
+                      id="typeEmail"
+                      className="form-control form-control-lg"
+                      placeholder="Email address"
+                      onChange={(e) => setMail(e.target.value)}
+                    />
+                    <label className="form-label" htmlFor="typeEmail">
+                      Email
+                    </label>
+                  </div>
 
-                <div className="form-outline mb-4">
-                  <input
-                    type="password"
-                    id="typePassword"
-                    className="form-control form-control-lg"
-                    placeholder="Password"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <label className="form-label" htmlFor="typePassword">
-                    Password
-                  </label>
-                </div>
+                  <div className="form-outline mb-4">
+                    <input
+                      type="password"
+                      id="typePassword"
+                      className="form-control form-control-lg"
+                      placeholder="Password"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <label className="form-label" htmlFor="typePassword">
+                      Password
+                    </label>
+                  </div>
 
-                <button
-                  className="btn btn-primary btn-lg btn-block"
-                  type="submit"
-                >
-                  Login
-                </button>
-              </form>
+                  <button
+                    className="btn btn-primary btn-lg btn-block"
+                    type="submit"
+                  >
+                    Login
+                  </button>
+                </form>
+              )}
 
               <hr className="my-4" />
 
