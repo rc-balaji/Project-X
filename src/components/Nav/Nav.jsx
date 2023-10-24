@@ -56,7 +56,7 @@ export const Nav = () => {
               Home
             </button>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <button
               className="nav-link btn btn-link"
               style={linkStyle}
@@ -64,7 +64,7 @@ export const Nav = () => {
             >
               Detector
             </button>
-          </li>
+          </li> */}
           <li className="nav-item">
             <button
               className="nav-link btn btn-link"

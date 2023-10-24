@@ -16,8 +16,8 @@ export const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const dob = null; // Set to null if not provided
-    const age = null; // Set to null if not provided
+    const dob = null;
+    const age = null;
 
     axios
       .post("https://health-server-bms1.onrender.com/register", {

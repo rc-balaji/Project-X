@@ -33,23 +33,19 @@ export const drawRect = (detections, ctx) => {
       ctx.rect(x, y, width, height);
       ctx.stroke();
 
-      // Draw a white background behind the label
       ctx.fillStyle = "white";
       const labelWidth = ctx.measureText(label).width;
       const secondLineHeight =
-        ctx.measureText(secondLine).actualBoundingBoxAscent; // Use actualBoundingBoxAscent
+        ctx.measureText(secondLine).actualBoundingBoxAscent;
       const lineHeight = 20;
 
       ctx.fillRect(x + width + 10, y, labelWidth + 200, 220);
 
-      // Set the fillStyle for the text after drawing the white background
       ctx.fillStyle = color;
 
-      // Draw the label text
       ctx.fillText(label, x + width + 20, y + 20);
 
-      // Set the fillStyle for the second line text
-      ctx.fillStyle = "black"; // Change text color for the second line if needed
+      ctx.fillStyle = "black";
       const secondLineParts = secondLine.split("\n");
       secondLineParts.forEach((part, index) => {
         ctx.fillText(part, x + width + 20, y + 50 + index * lineHeight);
