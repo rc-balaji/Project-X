@@ -3,6 +3,7 @@ import * as cocossd from "@tensorflow-models/coco-ssd";
 import Webcam from "react-webcam";
 import { drawRect } from "./utilities";
 import { Nav } from "./Nav/Nav";
+import "./Scanner.css";
 
 export function Scanner() {
   const webcamRef = useRef(null);
@@ -62,10 +63,12 @@ export function Scanner() {
             ref={webcamRef}
             muted={true}
             videoConstraints={videoConstraints}
+            // className="video-flip"
           />
 
           <canvas
             ref={canvasRef}
+            // className="video-flip"
             style={{
               position: "absolute",
               top: 0,

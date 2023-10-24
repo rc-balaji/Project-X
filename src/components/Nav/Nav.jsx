@@ -8,12 +8,12 @@ export const Nav = () => {
   const navigate = useNavigate();
   const { email } = useAppContext();
 
-  useEffect(() => {
-    const reload = () => {
-      if (email === "") navigate("/login");
-    };
-    reload();
-  });
+  // useEffect(() => {
+  //   const reload = () => {
+  //     if (email === "") navigate("/login");
+  //   };
+  //   reload();
+  // });
 
   const navBarStyle = {
     backgroundColor: "#fcd303",
