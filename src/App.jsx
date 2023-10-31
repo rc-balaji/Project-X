@@ -19,6 +19,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
+  const [dia, setDia] = useState("");
   const [dob, setDob] = useState(null); // State for Date of Birth
   const [age, setAge] = useState(null); // State for Age
   return (
@@ -37,6 +38,8 @@ function App() {
           setDob,
           age,
           setAge,
+          dia,
+          setDia,
         }}
       >
         <BrowserRouter>
@@ -45,8 +48,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/detector" element={<Detector />} />
-            <Route path="/scanner" element={<Scanner />} />
+            <Route path="/scanner" element={<Detector />} />
+            <Route path="/detector" element={<Scanner />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </BrowserRouter>

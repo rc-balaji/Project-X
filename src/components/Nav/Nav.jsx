@@ -56,22 +56,22 @@ export const Nav = () => {
               Home
             </button>
           </li>
-          {/* <li className="nav-item">
+          <li className="nav-item">
             <button
               className="nav-link btn btn-link"
               style={linkStyle}
               onClick={() => navigate("/detector")}
             >
-              Detector
+              Food Scanner
             </button>
-          </li> */}
+          </li>
           <li className="nav-item">
             <button
               className="nav-link btn btn-link"
               style={linkStyle}
               onClick={() => navigate("/scanner")}
             >
-              Scanner
+              Food Detector
             </button>
           </li>
           <li className="nav-item">
