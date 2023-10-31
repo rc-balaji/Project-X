@@ -60,16 +60,16 @@ export const Nav = () => {
             <button
               className="nav-link btn btn-link"
               style={linkStyle}
-              onClick={() => navigate("/detector")}
+              onClick={() => navigate("/scanner")}
             >
-              Food Scanner
+              Report Scanner
             </button>
           </li>
           <li className="nav-item">
             <button
               className="nav-link btn btn-link"
               style={linkStyle}
-              onClick={() => navigate("/scanner")}
+              onClick={() => navigate("/detector")}
             >
               Food Detector
             </button>
